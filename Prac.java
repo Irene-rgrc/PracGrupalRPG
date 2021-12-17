@@ -5,39 +5,24 @@ import java.util.Scanner;
 import java.io.*;
 
 //CLASES
-class Alumno implements Serializable {
-    String nombre;
-    int edad;
-    double nota;
-    int matricula;
-}
 
-public class Prac8C {
+
+public class Prac9 {
     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 
         // DEFINICION DE VARIABLES
         int option, posicion;
-        int tope = 0;
-        int dato = 0;
-        double nuevaNota, min;
 
-        Scanner entrada = new Scanner(System.in);
-        Alumno[] miClase = new Alumno[20];
-        for (int i = 0; i < miClase.length; i++) {
-            miClase[i] = new Alumno();
+
+
         }
-
-        // Creacion de matriz bidimensional
-        System.out.println("De cuantas filas quieres crear la tabla");
-        int m = entrada.nextInt();
-        System.out.println("De cuantas columnos quieres crear la tabla");
-        int n = entrada.nextInt();
-
-        int matriz[][] = new int[m][n];
+    System.out.println("Trabajo realizado por: Irene Rodríguez, Andrea Gil, Ghaudy Bellido, Cristina Valero, Sandra Martín");
+    System.out.println("---------------------------------------------------------------------------------------------------");
+    System.out.println("Bienvenido a Inhhildur, ¿qué deseas hacer?")
 
         do {
             System.out.println("Menu : ");
-            System.out.println("1. Introducir notas.");
+            System.out.println("1. Insertar pócima o ítem.");
             System.out.println("2. Mostrar notas.");
             System.out.println("3. Calcular estadísticas:");
             System.out.println("4. Mostrar la nota de un alumno concreto.");
