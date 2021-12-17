@@ -98,7 +98,8 @@ public class Ambito {
     }
 
     public static boolean esPar(int p) {
-        if (p % 2 == 0) {
+        if (p % 2 == 0) { <3
+       
             return true;
         } else {
             return false;
