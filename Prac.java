@@ -2,13 +2,36 @@ import java.util.Scanner;
 import java.io.*;
 
 //CLASES
+class Potion implements Serializable{
+   int id;
+   String name,description;
+   int type;
+   int points;
+}
 
+class Item implements Serializable{
+int id;
+String name,description;
+int type;
+int experience;
+}
 
 public class Prac9 {
     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
-
+        
+        // CONSTANTES
+        final int MAXPOTIONS=10,MAXITEMS=5;Ç
+        final int EXPERIENCE=10;
+        
         // DEFINICION DE VARIABLES
-        int option, posicion;
+        Scanner entrada=new Scanner(System.in);
+        int option;
+        int boundPotions=0,boundItems=0;
+        int race;
+        
+        //ARRAYS
+        Potion[]listPotions=new Potion[MAXPOTIONS];
+        Item[]listItems=new Item[MAXITEMS];
 
 
 
