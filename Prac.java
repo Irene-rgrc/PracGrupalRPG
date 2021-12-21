@@ -64,28 +64,25 @@ public class Prac9 {
 
                 case 1:
                     System.out.println("+++INSERTAR PÓCIMA O ÍTEM+++");
-                    try {
-                        ObjectOutputStream escribe = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
-                        int opcion;
-
-                        do {
-                            System.out.println("Dame el nombre:");
-                            miAmigo.nombre = entrada.next();
-                            System.out.println("Dame la edad:");
-                            miAmigo.edad = entrada.nextInt();
-                            System.out.println("Dame la dirección:");
-                            miAmigo.direccion = entrada.next();
-
-                            escribe.writeObject(miAmigo);
-
-                            System.out.println("¿Desea continuar?");
-                            System.out.println("1-Sí.  2-No.");
-                            opcion = entrada.nextInt();
-                        } while (opcion != 2);
-                        escribe.close();
-                    } catch (IOException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    
+                    do{
+                    System.out.println("+++¿Qué desea introducir?+++");
+                    System.out.println("1 Para pócimas  2 Para items  3 Para Salir");
+                    option = entrada.nextInt();
+                        switch (option) {
+                           case 1:
+                              System.out.println("+++INTRODUCIR PÓCIMA+++");
+                              break;
+                           case 2:
+                              System.out.println("+++INTRODUCIR ITEM+++");
+                              break;
+                           case 3:
+                              System.out.println("+++SALIENDO+++");
+                               break;
+                           default:
+                               System.out.println("La opción introducida es incorrecta.");
+                        }
+                     }while (option!=3);
 
                     break;
 
