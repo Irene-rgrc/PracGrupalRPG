@@ -76,6 +76,7 @@ public class Prac9 {
                               break;
                            case 2:
                               System.out.println("+++INTRODUCIR ITEM+++");
+                                boundItems = crearItems(listItems, boundItems, entrada);
                               break;
                            case 3:
                               System.out.println("+++SALIENDO+++");
