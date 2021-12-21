@@ -105,6 +105,7 @@ public class Prac9 {
 
                 case 5:
                     System.out.println("+++MONSTRAR PÓCIMAS E ITEMS+++");
+                    mostrarPocimas(listPotions, boundPotions)
                     
                     break;
 
@@ -181,6 +182,17 @@ public class Prac9 {
         System.out.println("Introduzca la experiencia del item");
         listItems[boundItems].experience = entrada.nextInt();
         return boundItems+1;
+    }
+    
+    static void mostrarPocimas(Potion[] array, int boundPotions) {
+        System.out.println("El número de pocimas son:" + (boundPotions+1));
+        for (int i = 0; i < boundPotions; i++) {
+            System.out.println("El nombre de la pócima: " + array[i].name);
+            System.out.println("La descripción de la pócima: " + array[i].description);
+            System.out.println("El tipo de pocima de la pócima: " + array[i].type);
+            System.out.println("La puntuación de la pócima: " + array[i].points);
+        }
+        System.out.println("");
     }
 
 }
