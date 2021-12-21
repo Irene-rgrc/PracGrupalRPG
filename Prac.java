@@ -72,6 +72,7 @@ public class Prac9 {
                         switch (option) {
                            case 1:
                               System.out.println("+++INTRODUCIR PÓCIMA+++");
+                              boundPotions = crearPociones(listPotions, boundPotions, entrada);  
                               break;
                            case 2:
                               System.out.println("+++INTRODUCIR ITEM+++");
@@ -146,6 +147,28 @@ public class Prac9 {
             }
 
         } while (option != 13);
+    }
+    
+    static int crearPociones(Potion[] array, int boundPotions, Scanner entrada) {
+        int id = array[boundPotions].id;
+        String name = array[boundPotions].name;
+        String description = array[boundPotions].description;
+        int type = array[boundPotions].type;
+        //int points = array[boundPotions].points;
+
+        System.out.println("Introducir el identificador de la pócima");
+        entrada.nextLine();
+        id = entrada.nextInt();
+        System.out.println("Introduzca el nombre de la pocima");
+        name = entrada.nextLine();
+        System.out.println("Introduzca la descripción de la pocima");
+        description = entrada.nextLine();
+        System.out.println("Introduzca el tipo de pocima:");
+        type = entrada.nextInt();
+
+        //out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + " Type:" + type + "\n");
+        return boundPotions;
+
     }
 
 }
