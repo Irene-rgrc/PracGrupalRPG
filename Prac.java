@@ -150,15 +150,13 @@ public class Prac9 {
     }
     
     static int crearPociones(Potion[] array, int boundPotions, Scanner entrada) {
-        int id = array[boundPotions].id;
-        String name = array[boundPotions].name;
-        String description = array[boundPotions].description;
-        int type = array[boundPotions].type;
+        int id = boundPotions+1;
+        String name = array[id].name;
+        String description = array[id].description;
+        int type = array[id].type;
         //int points = array[boundPotions].points;
 
-        System.out.println("Introducir el identificador de la pócima");
-        entrada.nextLine();
-        id = entrada.nextInt();
+        System.out.println("El identificador es: " + id);
         System.out.println("Introduzca el nombre de la pocima");
         name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
