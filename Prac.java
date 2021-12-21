@@ -1,6 +1,3 @@
-package P8C;
-
-
 import java.util.Scanner;
 import java.io.*;
 
@@ -16,6 +13,7 @@ public class Prac9 {
 
 
         }
+    System.out.println("---------------------------------------------------------------------------------------------------");
     System.out.println("Trabajo realizado por: Irene Rodríguez, Andrea Gil, Ghaudy Bellido, Cristina Valero, Sandra Martín");
     System.out.println("---------------------------------------------------------------------------------------------------");
     System.out.println("Bienvenido a Inhhildur, ¿qué deseas hacer?")
