@@ -41,72 +41,63 @@ public class Prac9 {
             switch (option) {
                 // APARTADO A
                 case 1:
-                    System.out.println("*******INTRODUCIR NOTAS**********");
-                    tope = insertarDatos(miClase, tope, entrada);
+                    System.out.println("*******INSERTAR PÓCIMA O ÍTEM**********");
+                   
                     break;
 
                 case 2:
-                    System.out.println("*******MOSTRAR DATOS**********");
-                    mostrarDatos(miClase, tope);
+                    System.out.println("*******INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA**********");
+                    
                     break;
 
                 case 3:
-                    System.out.println("*******CALCULAR ESTADISTICAS**********");
-                    mostrarEstadistica(miClase, tope);
+                    System.out.println("*******USAR PÓCIMA**********");
+                    
                     break;
 
                 case 4:
-                    System.out.println("*******MONSTRAR NOTA DE ALUMNO**********");
-                    System.out.println("Introduzca número de matricula: ");
-                    dato = entrada.nextInt();
-                    buscarAlumno(miClase, dato);
+                    System.out.println("*******TIRAR UN ITEM**********");
+                    
                     break;
 
                 case 5:
-                    System.out.println("*******MODIFICAR NOTA**********");
-                    nuevaNota = modificarDatos(miClase, tope, entrada);
-
+                    System.out.println("*******MONSTRAR PÓCIMAS E ITEMS**********");
+                    
                     break;
 
                 case 6:
                     System.out.println("*******MOSTRAR LA NOTA ESCRITA**********");
-                    mostrarEscrito(miClase, tope, entrada);
-
+                    
                     break;
 
                 case 7:
-                    System.out.println("*******MOSTRAR LA PEOR NOTA**********");
-                    min = minArray(miClase, tope);
-                    System.out.println("La peor nota es:" + min);
-                    posicion = buscarNotas(miClase, tope, min);
-                    System.out.println("El alumno con la peor nota es " + (posicion + 1));
+                    System.out.println("****MONSTAR ÍTEMS ORDENADOS ALFABÉTICAMENTE POR EL NOMBRE DEL PRIMER ELEMENTO*******");
+                    
                     break;
 
                 case 8:
-                    System.out.println("*******MOSTRAR LAS NOTAS DE PORCENTAJE**********");
-                    modificarPocerntaje(miClase, tope, entrada);
+                    System.out.println("*******SUBIDA DE NIVEL**********");
+                   
                     break;
 
-                // APARTADO B
-
                 case 9:
-                    System.out.println("*******RELLENAR MATRIZ**********");
-                    rellenarMatriz(matriz, entrada);
+                    System.out.println("*******GUARDAR TODAS LAS PÓCIMAS E ÍTEMS A FICHERO DE TEXTO**********");
+                   
                     break;
 
                 case 10:
-                    System.out.println("*********MOSTRAR MATRIZ********");
-                    mostrarMatriz(matriz);
+                    System.out.println("*********CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO********");
+                    
                     break;
 
                 case 11:
-                    System.out.println("*********BUSCAR ELEMENTO EN LA MATRIZ********");
-                    buscarMatriz(matriz, entrada);
+                    System.out.println("*********GUARDAR ESTADO DEL PJ AL DISCO********");
+                    
                     break;
 
                 case 12:
-                    System.out.println("*********MODIFICAR ELEMENTO EN LA MATRIZ********");
-                    modificarMatriz(matriz, entrada);
+                    System.out.println("*********CARGAR PJ********");
+                 
                     break;
 
                 default:
