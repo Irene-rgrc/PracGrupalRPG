@@ -171,8 +171,8 @@ public class Prac9 {
     }
     
     static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
-        System.out.println("El identificador del item es" + boundItems);
-        listItems[boundItems].id = entrada.nextInt();
+        System.out.println("El identificador del item es" + (boundItems+1));
+        listItems[boundItems].id = (boundItems+1);
         System.out.println("Introduzca el nombre del item");
         listItems[boundItems].name = entrada.nextLine();
         System.out.println("Introduzca la descripción del item");
