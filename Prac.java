@@ -35,11 +35,10 @@ public class Prac9 {
             System.out.println("13. Terminar");
             System.out.println("Elija una opción: ");
 
-            // System.out.println("");
             option = entrada.nextInt();
 
             switch (option) {
-                // APARTADO A
+                
                 case 1:
                     System.out.println("*******INSERTAR PÓCIMA O ÍTEM**********");
                    
