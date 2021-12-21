@@ -40,62 +40,62 @@ public class Prac9 {
             switch (option) {
                 
                 case 1:
-                    System.out.println("*******INSERTAR PÓCIMA O ÍTEM**********");
+                    System.out.println("+++INSERTAR PÓCIMA O ÍTEM+++");
                    
                     break;
 
                 case 2:
-                    System.out.println("*******INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA**********");
+                    System.out.println("+++INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA+++");
                     
                     break;
 
                 case 3:
-                    System.out.println("*******USAR PÓCIMA**********");
+                    System.out.println("+++USAR PÓCIMA+++");
                     
                     break;
 
                 case 4:
-                    System.out.println("*******TIRAR UN ITEM**********");
+                    System.out.println("+++TIRAR UN ITEM+++");
                     
                     break;
 
                 case 5:
-                    System.out.println("*******MONSTRAR PÓCIMAS E ITEMS**********");
+                    System.out.println("+++MONSTRAR PÓCIMAS E ITEMS+++);
                     
                     break;
 
                 case 6:
-                    System.out.println("*******MOSTRAR LA NOTA ESCRITA**********");
+                    System.out.println("+++MOSTRAR LA NOTA ESCRITA+++");
                     
                     break;
 
                 case 7:
-                    System.out.println("****MONSTAR ÍTEMS ORDENADOS ALFABÉTICAMENTE POR EL NOMBRE DEL PRIMER ELEMENTO*******");
+                    System.out.println("+++MONSTAR ÍTEMS ORDENADOS ALFABÉTICAMENTE POR EL NOMBRE DEL PRIMER ELEMENTO+++");
                     
                     break;
 
                 case 8:
-                    System.out.println("*******SUBIDA DE NIVEL**********");
+                    System.out.println("+++SUBIDA DE NIVEL+++");
                    
                     break;
 
                 case 9:
-                    System.out.println("*******GUARDAR TODAS LAS PÓCIMAS E ÍTEMS A FICHERO DE TEXTO**********");
+                    System.out.println("+++GUARDAR TODAS LAS PÓCIMAS E ÍTEMS A FICHERO DE TEXTO+++");
                    
                     break;
 
                 case 10:
-                    System.out.println("*********CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO********");
+                    System.out.println("+++CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO+++");
                     
                     break;
 
                 case 11:
-                    System.out.println("*********GUARDAR ESTADO DEL PJ AL DISCO********");
+                    System.out.println("+++GUARDAR ESTADO DEL PJ AL DISCO+++");
                     
                     break;
 
                 case 12:
-                    System.out.println("*********CARGAR PJ********");
+                    System.out.println("+++CARGAR PJ+++");
                  
                     break;
 
