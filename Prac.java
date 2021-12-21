@@ -20,7 +20,7 @@ public class Prac9 {
     public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
         
         // CONSTANTES
-        final int MAXPOTIONS=10,MAXITEMS=5;Ç
+        final int MAXPOTIONS=10,MAXITEMS=5;
         final int EXPERIENCE=10;
         
         // DEFINICION DE VARIABLES
