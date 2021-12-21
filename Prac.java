@@ -185,7 +185,7 @@ public class Prac9 {
     }
     
     static void mostrarPocimas(Potion[] array, int boundPotions) {
-        System.out.println("El número de pocimas son:" + (boundPotions+1));
+        System.out.println("El número de pocimas son:" + (boundPotions));
         for (int i = 0; i < boundPotions; i++) {
             System.out.println("El nombre de la pócima: " + array[i].name);
             System.out.println("La descripción de la pócima: " + array[i].description);
