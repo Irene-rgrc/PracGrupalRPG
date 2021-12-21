@@ -168,7 +168,20 @@ public class Prac9 {
 
         //out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + " Type:" + type + "\n");
         return boundPotions;
-
+    }
+    
+    static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
+        System.out.println("El identificador del item es" + boundItems);
+        listItems[boundItems].id = entrada.nextInt();
+        System.out.println("Introduzca el nombre del item");
+        listItems[boundItems].name = entrada.nextLine();
+        System.out.println("Introduzca la descripción del item");
+        listItems[boundItems].description = entrada.nextLine();
+        System.out.println("Introduzca el tipo del item: 1-Arma 2-Armadura 3-Miscelaneo");
+        listItems[boundItems].type = entrada.nextInt();
+        System.out.println("Introduzca la experiencia del item");
+        listItems[boundItems].experience = entrada.nextInt();
+        return boundItems+1;
     }
 
 }
