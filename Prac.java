@@ -165,7 +165,7 @@ public class Prac9 {
         type = entrada.nextInt();
 
         //out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + " Type:" + type + "\n");
-        return boundPotions;
+        return boundPotions+1;
     }
     
     static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
