@@ -23,20 +23,18 @@ public class Prac9 {
         do {
             System.out.println("Menu : ");
             System.out.println("1. Insertar pócima o ítem.");
-            System.out.println("2. Mostrar notas.");
-            System.out.println("3. Calcular estadísticas:");
-            System.out.println("4. Mostrar la nota de un alumno concreto.");
-            System.out.println("5. Modificar la nota de un alumno concreto");
-            System.out.println("6. Mostrar la nota escrita");
-            System.out.println("7.Mostrar la nota del alumno con peor nota");
-            System.out.println("8. Modificar todas las notas en un porcentaje,");
-            System.out.println("9. Rellenar matriz");
-            System.out.println("10. Mostrar matriz");
-            System.out.println("11. Buscar un elemento en la matriz");
-            System.out.println("12. Modificar un elemento en la matriz");
-            System.out.println("13. Escribir (Guardar) el array en fichero Binario");
-            System.out.println("14. Leer del Fichero Binario y Cargar en el array");
-            System.out.println("15. Salir ");
+            System.out.println("2. Insertar pócima o ítem en posición determinada.");
+            System.out.println("3. Usar pócima.");
+            System.out.println("4. Tirar un ítem.");
+            System.out.println("5. Mostrar pócimas e ítems.");
+            System.out.println("6. Mostrar ítems ordenados alfabéticamente por el nombre del primer elemento.");
+            System.out.println("7. Buscar pócima e ítem.");
+            System.out.println("8. Subida de nivel. ");
+            System.out.println("9. Guardar todas las pócimas e ítems a fichero de texto.");
+            System.out.println("10. Cargar situación de la última partida desde fichero de texto.");
+            System.out.println("11. Guardar estado del PJ a disco.");
+            System.out.println("12. Cargar PJ.");
+            System.out.println("13. Terminar");
             System.out.println("Elija una opción: ");
 
             // System.out.println("");
@@ -113,35 +111,10 @@ public class Prac9 {
                     modificarMatriz(matriz, entrada);
                     break;
 
-                case 13:
-                    System.out.println("*********ESCRIBRIR (GUARDAR) EL ARRAY EN FICHERO BINARIO********");
-                    guardarFichero(miClase, tope);
-                    break;
-
-                case 14:
-                    System.out.println("*********LEER FICHERO EN BINARIO Y CARGAR EN EL ARRAY********");
-                    int y = 0;
-                    try {
-                        Alumno alumno;
-                        ObjectInputStream in = new ObjectInputStream(new FileInputStream("notas.dat"));
-                        //Alumno alumno = (Alumno) in.readObject();
-                        alumno = (Alumno) in.readObject();
-                        while (alumno.nombre != null) {
-                            miClase[y] = alumno;
-                            y++;
-                            alumno = (Alumno) in.readObject();
-                        }
-                        in.close();
-                    } catch (IOException e2) {
-                        System.out.println(e2.getMessage());
-                    }
-                    tope = y;
-                    break;
-
                 default:
                     System.out.println("Hasta luego.");
             }
 
-        } while (option != 15);
+        } while (option != 13);
     }
 }
