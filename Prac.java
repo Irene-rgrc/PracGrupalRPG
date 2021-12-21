@@ -64,6 +64,28 @@ public class Prac9 {
 
                 case 1:
                     System.out.println("+++INSERTAR PÓCIMA O ÍTEM+++");
+                    try {
+                        ObjectOutputStream escribe = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
+                        int opcion;
+
+                        do {
+                            System.out.println("Dame el nombre:");
+                            miAmigo.nombre = entrada.next();
+                            System.out.println("Dame la edad:");
+                            miAmigo.edad = entrada.nextInt();
+                            System.out.println("Dame la dirección:");
+                            miAmigo.direccion = entrada.next();
+
+                            escribe.writeObject(miAmigo);
+
+                            System.out.println("¿Desea continuar?");
+                            System.out.println("1-Sí.  2-No.");
+                            opcion = entrada.nextInt();
+                        } while (opcion != 2);
+                        escribe.close();
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
 
                     break;
 
@@ -84,7 +106,7 @@ public class Prac9 {
 
                 case 5:
                     System.out.println("+++MONSTRAR PÓCIMAS E ITEMS+++");
-
+                    
                     break;
 
                 case 6:
@@ -128,27 +150,7 @@ public class Prac9 {
 
         } while (option != 13);
     }
-    try {
-            ObjectOutputStream escribe = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
-            int opcion;
-            
-            do {
-                System.out.println("Dame el nombre:");
-                miAmigo.nombre = entrada.next();
-                System.out.println("Dame la edad:");
-                miAmigo.edad = entrada.nextInt();
-                System.out.println("Dame la dirección:");
-                miAmigo.direccion = entrada.next();
 
-                escribe.writeObject(miAmigo);
-
-                System.out.println("¿Desea continuar?");
-                System.out.println("1-Sí.  2-No.");
-                opcion = entrada.nextInt();
-            } while (opcion != 2);
-            escribe.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
 }
+    
 
