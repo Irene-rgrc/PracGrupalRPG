@@ -106,7 +106,7 @@ public class PracGame {
                     switch (opti) {
                         case 1:
                             System.out.println("---Humano---");
-                            System.out.println("Que vas ha anadir? 1-Pocima 2-Item");
+                            System.out.println("Que vas a anadir? 1-Pocima 2-Item");
                             int a = entrada.nextInt();
                             if (a ==1){
                                 insertarPociones(listPotions, boundPotions, entrada);
@@ -132,8 +132,6 @@ public class PracGame {
                         default:
                             System.out.println("La opción introducida es incorrecta.");
                     }
-                    
-
                     break;
 
                 case 3:
@@ -143,7 +141,15 @@ public class PracGame {
 
                 case 4:
                     System.out.println("+++TIRAR UN ITEM+++");
-
+                    System.out.println("Que vas a tirar? 1-Pocima 2-Item");
+                    int a = entrada.nextInt();
+                    if (a == 1) {
+                        eliminarPociones(listPotions, boundPotions, entrada);
+                    } else if (a == 2) {
+                        eliminarItems(listItems, boundItems, entrada);
+                    } else {
+                        System.out.println("Error, no se encuentra dentro del rango permitido");
+                    }
                     break;
 
                 case 5:
@@ -270,21 +276,50 @@ public class PracGame {
 
     static void insertarItems(Item[] listItems, int boundItems, Scanner entrada) {
         int id = listItems[boundItems].id;
-        System.out.println("Introduzca el identificador de la pocima: ");
+        System.out.println("Introduzca el identificador del item: ");
         listItems[boundItems].id = entrada.nextInt();
         entrada.nextLine();
-        System.out.println("Introduzca el nombre de la pocima");
+        System.out.println("Introduzca el nombre del item");
         listItems[id].name = entrada.nextLine();
-        System.out.println("Introduzca la descripción de la pocima");
+        System.out.println("Introduzca la descripción del item");
         listItems[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de item: 1- 2- 3-");
         listItems[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[id].experience = entrada.nextInt();
     }
 
+    //CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
+
+
+    //CASE 4
+
+    static void eliminarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        int id = listPotions[boundPotions].id;
+        System.out.println("Introduzca el identificador de la pocima: ");
+        listPotions[boundPotions].id = entrada.nextInt();
+        //Eliminamos
+        listPotions[id].name = null; // String es con null y int con 0 para dejarlo vacio
+        listPotions[id].description = null;
+        listPotions[id].type = 0;
+        listPotions[id].points = 0;
+    }
+
+    static void eliminarItems(Item[] listItems, int boundItems, Scanner entrada) {
+        int id = listItems[boundItems].id;
+        System.out.println("Introduzca el identificador del item: ");
+        listItems[boundItems].id = entrada.nextInt();
+        //Eliminamos
+        listItems[id].name = null;
+        listItems[id].description = null;
+        listItems[id].type = 0;
+        listItems[id].experience = 0;
+        
+    }
+
 }
     
+
  
 
     
