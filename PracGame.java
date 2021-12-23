@@ -160,14 +160,14 @@ public class PracGame {
         } while (option != 13);
     }
     
-    static int crearPociones(Potion[] array, int boundPotions, Scanner entrada) {
-        array[boundPotions].id = boundPotions+1;
-        String name = array[boundPotions].name;
-        String description = array[boundPotions].description;
-        int type = array[boundPotions].type;
-        int points = array[boundPotions].points;
+    static int crearPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        listPotions[boundPotions].id = boundPotions+1;
+        String name = listPotions[boundPotions].name;
+        String description = listPotions[boundPotions].description;
+        int type = listPotions[boundPotions].type;
+        int points = listPotions[boundPotions].points;
 
-        System.out.println("El identificador de la pocion es: " + array[boundPotions].id);
+        System.out.println("El identificador de la pocion es: " + listPotions[boundPotions].id);
         entrada.nextLine();
         System.out.println("Introduzca el nombre de la pocima");
         name = entrada.nextLine();
@@ -197,13 +197,13 @@ public class PracGame {
         return boundItems+1;
     }
     
-    static void mostrarPocimas(Potion[] array, int boundPotions) {
+    static void mostrarPocimas(Potion[] listPotions, int boundPotions) {
         System.out.println("El número de pocimas son:" + (boundPotions));
         for (int i = 0; i < boundPotions; i++) {
-            System.out.println("El nombre de la pócima: " + array[i].name);
-            System.out.println("La descripción de la pócima: " + array[i].description);
-            System.out.println("El tipo de pocima de la pócima: " + array[i].type);
-            System.out.println("La puntuación de la pócima: " + array[i].points);
+            System.out.println("El nombre de la pócima: " + listPotions[i].name);
+            System.out.println("La descripción de la pócima: " + listPotions[i].description);
+            System.out.println("El tipo de pocima de la pócima: " + listPotions[i].type);
+            System.out.println("La puntuación de la pócima: " + listPotions[i].points);
         }
         System.out.println("");
     }
