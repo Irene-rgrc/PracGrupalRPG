@@ -110,6 +110,10 @@ public class PracGame {
                             int a = entrada.nextInt();
                             if (a ==1){
                                 insertarPociones(listPotions, boundPotions, entrada);
+                            }else if (a == 2){
+                                insertarItems(listItems, boundItems, entrada);
+                            }else {
+                                System.out.println("Error, no se encuentra dentro del rango permitido");
                             }
 
                             break;
@@ -262,11 +266,24 @@ public class PracGame {
         listPotions[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[id].points = entrada.nextInt();
-        //return id;
+    }
+
+    static void insertarItems(Item[] listItems, int boundItems, Scanner entrada) {
+        int id = listItems[boundItems].id;
+        System.out.println("Introduzca el identificador de la pocima: ");
+        listItems[boundItems].id = entrada.nextInt();
+        entrada.nextLine();
+        System.out.println("Introduzca el nombre de la pocima");
+        listItems[id].name = entrada.nextLine();
+        System.out.println("Introduzca la descripción de la pocima");
+        listItems[id].description = entrada.nextLine();
+        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        listItems[id].type = entrada.nextInt();
+        System.out.println("Introduzca la experiencia del item");
+        listItems[id].experience = entrada.nextInt();
     }
 
 }
-    
     
  
 
