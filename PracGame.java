@@ -34,7 +34,16 @@ public class PracGame {
 
         //ARRAYS
         Potion[] listPotions = new Potion[MAXPOTIONS];
+        for (int i = 0; i < listPotions.length; i++) {
+            listPotions[i] = new Potion();
+        }
+
         Item[] listItems = new Item[MAXITEMS];
+        for (int i = 0; i < listItems.length; i++) {
+            listItems[i] = new Item();
+        }
+
+        
 
         System.out.println("---------------------------------------------------------------------------------------------------");
         System.out.println("Trabajo realizado por: Irene Rodríguez, Andrea Gil, Ghaudy Bellido, Cristina Valero, Sandra Martín");
@@ -196,4 +205,3 @@ public class PracGame {
     }
 
 }
-    
