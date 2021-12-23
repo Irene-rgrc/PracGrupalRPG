@@ -335,6 +335,7 @@ public class PracGame {
         listPotions[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[id].points = entrada.nextInt();
+        boundPotions++;
     }
 
     static void insertarItems(Item[] listItems, int boundItems, Scanner entrada) {
@@ -358,6 +359,7 @@ public class PracGame {
         listItems[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[id].experience = entrada.nextInt();
+        boundItems++;
     }
 
     //CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
