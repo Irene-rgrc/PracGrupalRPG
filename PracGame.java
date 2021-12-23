@@ -99,6 +99,31 @@ public class PracGame {
 
                 case 2:
                     System.out.println("+++INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA+++");
+                    int opti;
+                    System.out.println("---Cual es la raza de tu personaje?---");
+                    System.out.println("1:Humano  2:Orco  3:Elfo  4:Enano");
+                    opti = entrada.nextInt();
+                    switch (opti) {
+                        case 1:
+                            System.out.println("---Humano---");
+
+                            break;
+                        case 2:
+                            System.out.println("---Orco---");
+
+                            break;
+                        case 3:
+                            System.out.println("---Elfo---");
+
+                            break;
+                        case 4:
+                            System.out.println("---Enano---");
+
+                            break;
+                        default:
+                            System.out.println("La opción introducida es incorrecta.");
+                    }
+                    
 
                     break;
 
@@ -216,5 +241,6 @@ public class PracGame {
 
 }
     
+ 
 
     
