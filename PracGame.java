@@ -115,6 +115,7 @@ public class PracGame {
                 case 5:
                     System.out.println("+++MONSTRAR PÓCIMAS E ITEMS+++");
                     mostrarPocimas(listPotions, boundPotions);
+                    mostrarItems(listItems, boundItems);
                     
                     break;
 
@@ -162,22 +163,16 @@ public class PracGame {
     
     static int crearPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
         listPotions[boundPotions].id = boundPotions+1;
-        String name = listPotions[boundPotions].name;
-        String description = listPotions[boundPotions].description;
-        int type = listPotions[boundPotions].type;
-        int points = listPotions[boundPotions].points;
-
         System.out.println("El identificador de la pocion es: " + listPotions[boundPotions].id);
         entrada.nextLine();
         System.out.println("Introduzca el nombre de la pocima");
-        name = entrada.nextLine();
+        listPotions[boundPotions].name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
-        description = entrada.nextLine();
+        listPotions[boundPotions].description = entrada.nextLine();
         System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
-        type = entrada.nextInt();
+        listPotions[boundPotions].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
-        points = entrada.nextInt();
-
+        listPotions[boundPotions].points = entrada.nextInt();
         //out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + " Type:" + type + "\n");
         return boundPotions+1;
     }
@@ -208,5 +203,18 @@ public class PracGame {
         System.out.println("");
     }
 
+    static void mostrarItems(Item[] listItems, int boundItems) {
+        System.out.println("El número de pocimas son:" + (boundItems));
+        for (int i = 0; i < boundItems; i++) {
+            System.out.println("El nombre de la pócima: " + listItems[i].name);
+            System.out.println("La descripción de la pócima: " + listItems[i].description);
+            System.out.println("El tipo de pocima de la pócima: " + listItems[i].type);
+            System.out.println("La puntuación de la pócima: " + listItems[i].experience);
+        }
+        System.out.println("");
+    }
+
 }
+    
+
     
