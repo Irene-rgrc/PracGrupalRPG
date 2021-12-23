@@ -374,19 +374,19 @@ public class PracGame {
           listPotions[i].type = listPotions[i+1].type;
           listPotions[i].points = listPotions[i+1].points;
         }
-      tope--;
+      boundPotions--;
     }
 
     static void eliminarItems(Item[] listItems, int boundItems, Scanner entrada) {
         System.out.println("Introduzca el identificador del item: ");
         int id = entrada.nextInt();
-        for (int i=0; i<=boundPotions, i++) {
+        for (int i=0; i<=boundItems, i++) {
         listItems[i].name = listItems[i+1].name;
         listItems[i].description = listItems[i+1].description;
         listItems[i].type = listItems[i+1].type;
         listItems[i].experience = listItems[i+1].experience;
         }
-      tope--;
+      boundItems--;
     }
 
 }
