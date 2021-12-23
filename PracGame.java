@@ -161,27 +161,31 @@ public class PracGame {
     }
     
     static int crearPociones(Potion[] array, int boundPotions, Scanner entrada) {
-        int id = boundPotions+1;
-        String name = array[id].name;
-        String description = array[id].description;
-        int type = array[id].type;
-        //int points = array[boundPotions].points;
+        array[boundPotions].id = boundPotions+1;
+        String name = array[boundPotions].name;
+        String description = array[boundPotions].description;
+        int type = array[boundPotions].type;
+        int points = array[boundPotions].points;
 
-        System.out.println("El identificador es: " + id);
+        System.out.println("El identificador de la pocion es: " + array[boundPotions].id);
+        entrada.nextLine();
         System.out.println("Introduzca el nombre de la pocima");
         name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
         description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima:");
+        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
         type = entrada.nextInt();
+        System.out.println("Introduzca la experiencia del item");
+        points = entrada.nextInt();
 
         //out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + " Type:" + type + "\n");
-        return id;
+        return boundPotions+1;
     }
     
     static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
         System.out.println("El identificador del item es" + (boundItems+1));
         listItems[boundItems].id = (boundItems+1);
+        entrada.nextLine();
         System.out.println("Introduzca el nombre del item");
         listItems[boundItems].name = entrada.nextLine();
         System.out.println("Introduzca la descripción del item");
@@ -205,3 +209,4 @@ public class PracGame {
     }
 
 }
+    
