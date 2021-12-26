@@ -207,7 +207,7 @@ public class PracGame {
                             break;
                         case 2:
                             System.out.println("---Guardar item en txt---");
-                            
+                            ficheroItems(listItems, boundItems);
                             break;
                         case 3:
                             System.out.println("+++SALIENDO+++");
@@ -501,6 +501,19 @@ public class PracGame {
         }
     }
 
+    static void ficheroItems(Item[] listItems, int boundItems){
+        try {
+            ObjectOutputStream out = null;
+            out = new ObjectOutputStream(new FileOutputStream("items.txt", true));
+            for (int i = 0; i < boundItems; i++) {
+                out.writeObject((Item) listItems[i]);
+            }
+            out.close();
+        } catch(IOException e1){
+            System.out.println(e1.getMessage());
+        }
+    }
+
     // CASO 10
 
     // CASO 11
@@ -528,8 +541,6 @@ public class PracGame {
     }
 
     // CASO 12
-
-
 
 }
 
