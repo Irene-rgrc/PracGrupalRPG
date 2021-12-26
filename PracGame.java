@@ -185,8 +185,9 @@ public class PracGame {
                     break;
 
                 case 7:
-                    System.out
-                            .println("+++MONSTAR ÍTEMS ORDENADOS ALFABÉTICAMENTE POR EL NOMBRE DEL PRIMER ELEMENTO+++");
+                    System.out.println("+++BUSCAR POCIMA O ITEM+++");
+                    buscarPocion(listPotions, boundPotions, entrada);
+                    buscarItem(listItems, boundItems, entrada);
 
                     break;
 
@@ -446,5 +447,24 @@ public class PracGame {
         for (int i = 0; i < boundPotions; i++) {
             System.out.println(listPotions[i].name);
         }
+    }
+
+    // CASE 7
+    static void buscarPocion(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        System.out.println("Introduzca el identificador de la pocion: ");
+        int id = entrada.nextInt();
+        System.out.println("La pócima es: " + listPotions[id-1].name);
+        System.out.println("Con una descripcion de: " + listPotions[id-1].description);
+        System.out.println("El tipo de pocima de la pócima es: " + listPotions[id-1].type);
+        System.out.println("Con una puntuacion de: " + listPotions[id-1].points);
+    }
+
+    static void buscarItem(Item[] listItems, int boundItems, Scanner entrada) {
+        System.out.println("Introduzca el identificador del item: ");
+        int id = entrada.nextInt();
+        System.out.println("La pócima es: " + listItems[id-1].name);
+        System.out.println("Con una descripcion de: " + listItems[id-1].description);
+        System.out.println("El tipo de pocima de la pócima es: " + listItems[id-1].type);
+        System.out.println("Con una puntuacion de: " + listItems[id-1].experience);
     }
 }
