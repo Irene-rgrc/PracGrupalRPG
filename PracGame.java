@@ -31,6 +31,7 @@ public class PracGame {
         int option;
         int boundPotions = 0, boundItems = 0;
         int race;
+        int puntos;
 
         //ARRAYS
         Potion[] listPotions = new Potion[MAXPOTIONS];
@@ -106,6 +107,16 @@ public class PracGame {
                     switch (opti) {
                         case 1:
                             System.out.println("---Humano---");
+                            System.out.println("No tienes esta ventaja, vuelve al menú principal y selecciona Crear pócima o ítem");
+
+                            break;
+                        case 2:
+                            System.out.println("---Orco---");
+                            System.out.println("No tienes esta ventaja, vuelve al menú principal y selecciona Crear pócima o ítem");
+
+                            break;
+                        case 3:
+                            System.out.println("---Elfo---");
                             System.out.println("Que vas a anadir? 1-Pocima 2-Item");
                             int a = entrada.nextInt();
                             if (a ==1){
@@ -117,16 +128,17 @@ public class PracGame {
                             }
 
                             break;
-                        case 2:
-                            System.out.println("---Orco---");
-
-                            break;
-                        case 3:
-                            System.out.println("---Elfo---");
-
-                            break;
                         case 4:
                             System.out.println("---Enano---");
+                            System.out.println("Que vas a anadir? 1-Pocima 2-Item");
+                            int b = entrada.nextInt();
+                            if (b ==1){
+                                insertarPociones(listPotions, boundPotions, entrada);
+                            }else if (b == 2){
+                                insertarItems(listItems, boundItems, entrada);
+                            }else {
+                                System.out.println("Error, no se encuentra dentro del rango permitido");
+                            }
 
                             break;
                         default:
@@ -136,6 +148,7 @@ public class PracGame {
 
                 case 3:
                     System.out.println("+++USAR PÓCIMA+++");
+                    puntos = usarPocion(listPotions, boundPotions);
 
                     break;
 
@@ -144,9 +157,13 @@ public class PracGame {
                     System.out.println("Que vas a tirar? 1-Pocima 2-Item");
                     int a = entrada.nextInt();
                     if (a == 1) {
-                        eliminarPociones(listPotions, boundPotions, entrada);
+                        System.out.println("Introduzca el identificador de la pocima: ");
+                        int id = entrada.nextInt();
+                        eliminarPociones(listPotions, boundPotions, id);
                     } else if (a == 2) {
-                        eliminarItems(listItems, boundItems, entrada);
+                        System.out.println("Introduzca el identificador del item: ");
+                        int id = entrada.nextInt();
+                        eliminarItems(listItems, boundItems, id);
                     } else {
                         System.out.println("Error, no se encuentra dentro del rango permitido");
                     }
@@ -233,10 +250,95 @@ public class PracGame {
         listItems[boundItems].experience = entrada.nextInt();
         return boundItems+1;
     }
+
+    //CASE 2
+
+    static void insertarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        System.out.println("Introduzca el identificador de la pocima: ");
+        int id = entrada.nextInt();
+        id = id-1;
+        for (int i = boundPotions; i>=id; i--) {
+            listPotions[i+1].id=(boundPotions+2);
+            listPotions[i+1].name=listPotions[i].name;
+            listPotions[i+1].description=listPotions[i].description;
+            listPotions[i+1].type=listPotions[i].type;
+            listPotions[i+1].points=listPotions[i].points;
+        }
+        listPotions[id].id = (id+1);
+        entrada.nextLine();
+        System.out.println("Introduzca el nombre de la pocima");
+        listPotions[id].name = entrada.nextLine();
+        System.out.println("Introduzca la descripción de la pocima");
+        listPotions[id].description = entrada.nextLine();
+        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        listPotions[id].type = entrada.nextInt();
+        System.out.println("Introduzca la experiencia del item");
+        listPotions[id].points = entrada.nextInt();
+        boundPotions++;
+    }
+
+    static void insertarItems(Item[] listItems, int boundItems, Scanner entrada) {
+        System.out.println("Introduzca el identificador del item: ");
+        int id = entrada.nextInt();
+        id = id-1;
+        for (int i = boundItems; i>=id; i--) {
+            listItems[i+1].id=(boundItems+2);
+            listItems[i+1].name=listItems[i].name;
+            listItems[i+1].description=listItems[i].description;
+            listItems[i+1].type=listItems[i].type;
+            listItems[i+1].experience=listItems[i].experience;
+        }
+        listItems[id].id = (id+1);
+        entrada.nextLine();
+        System.out.println("Introduzca el nombre del item");
+        listItems[id].name = entrada.nextLine();
+        System.out.println("Introduzca la descripción del item");
+        listItems[id].description = entrada.nextLine();
+        System.out.println("Introduzca el tipo de item: 1- 2- 3-");
+        listItems[id].type = entrada.nextInt();
+        System.out.println("Introduzca la experiencia del item");
+        listItems[id].experience = entrada.nextInt();
+        boundItems++;
+    }
+
+    //CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
+    static int usarPocion(Potion[] listPotions, int boundPotions) {
+        int punto = listPotions[0].points; 
+        eliminarPociones(listPotions, boundPotions, 1);
+        return punto;
+    }
+    
+    //CASE 4
+
+    static void eliminarPociones(Potion[] listPotions, int boundPotions, int id) {
+        //System.out.println("Introduzca el identificador de la pocima: ");
+        //int id = entrada.nextInt();
+        for (int i=id; i<=boundPotions; i++) {
+          listPotions[i].name = listPotions[i+1].name;
+          listPotions[i].description = listPotions[i+1].description;
+          listPotions[i].type = listPotions[i+1].type;
+          listPotions[i].points = listPotions[i+1].points;
+        }
+      boundPotions--;
+    } 
+
+    static void eliminarItems(Item[] listItems, int boundItems, int id) {
+        //System.out.println("Introduzca el identificador del item: ");
+        //int id = entrada.nextInt();
+        for (int i=(id-1); i<=boundItems; i++) {
+        listItems[i].name = listItems[i+1].name;
+        listItems[i].description = listItems[i+1].description;
+        listItems[i].type = listItems[i+1].type;
+        listItems[i].experience = listItems[i+1].experience;
+        }
+      boundItems--;
+    }
     
     // CASE 5
     static void mostrarPocimas(Potion[] listPotions, int boundPotions) {
         System.out.println("El número de pocimas son:" + (boundPotions));
+        System.out.println("La pócima con mayor número de puntos es: " + maxP(listPotions, boundPotions));
+        System.out.println("La pócima con mayor número de puntos es: " + minP(listPotions, boundPotions));
         for (int i = 0; i < boundPotions; i++) {
             System.out.println("El nombre de la pócima: " + listPotions[i].name);
             System.out.println("La descripción de la pócima: " + listPotions[i].description);
@@ -247,7 +349,9 @@ public class PracGame {
     }
 
     static void mostrarItems(Item[] listItems, int boundItems) {
-        System.out.println("El número de pocimas son:" + (boundItems));
+        System.out.println("El número de ítems son:" + (boundItems));
+        System.out.println("El ítem con mayor experiencia es: " + maxI(listItems, boundItems));
+        System.out.println("El ítem con menor experiencia es: " + minI(listItems, boundItems));
         for (int i = 0; i < boundItems; i++) {
             System.out.println("El nombre de la pócima: " + listItems[i].name);
             System.out.println("La descripción de la pócima: " + listItems[i].description);
@@ -256,70 +360,46 @@ public class PracGame {
         }
         System.out.println("");
     }
-
-    //CASE 2
-
-    static void insertarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
-        int id = listPotions[boundPotions].id;
-        System.out.println("Introduzca el identificador de la pocima: ");
-        listPotions[boundPotions].id = entrada.nextInt();
-        entrada.nextLine();
-        System.out.println("Introduzca el nombre de la pocima");
-        listPotions[id].name = entrada.nextLine();
-        System.out.println("Introduzca la descripción de la pocima");
-        listPotions[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
-        listPotions[id].type = entrada.nextInt();
-        System.out.println("Introduzca la experiencia del item");
-        listPotions[id].points = entrada.nextInt();
-    }
-
-    static void insertarItems(Item[] listItems, int boundItems, Scanner entrada) {
-        int id = listItems[boundItems].id;
-        System.out.println("Introduzca el identificador del item: ");
-        listItems[boundItems].id = entrada.nextInt();
-        entrada.nextLine();
-        System.out.println("Introduzca el nombre del item");
-        listItems[id].name = entrada.nextLine();
-        System.out.println("Introduzca la descripción del item");
-        listItems[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de item: 1- 2- 3-");
-        listItems[id].type = entrada.nextInt();
-        System.out.println("Introduzca la experiencia del item");
-        listItems[id].experience = entrada.nextInt();
-    }
-
-    //CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
-
-
-    //CASE 4
-
-    static void eliminarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
-        int id = listPotions[boundPotions].id;
-        System.out.println("Introduzca el identificador de la pocima: ");
-        listPotions[boundPotions].id = entrada.nextInt();
-        //Eliminamos
-        listPotions[id].name = null; // String es con null y int con 0 para dejarlo vacio
-        listPotions[id].description = null;
-        listPotions[id].type = 0;
-        listPotions[id].points = 0;
-    }
-
-    static void eliminarItems(Item[] listItems, int boundItems, Scanner entrada) {
-        int id = listItems[boundItems].id;
-        System.out.println("Introduzca el identificador del item: ");
-        listItems[boundItems].id = entrada.nextInt();
-        //Eliminamos
-        listItems[id].name = null;
-        listItems[id].description = null;
-        listItems[id].type = 0;
-        listItems[id].experience = 0;
-        
-    }
-
-}
     
-
- 
-
+    static int maxP(Potion[] listPotions, int boundPotions) {
+        int max = listPotions[0].points;
+        for (int i = 1; i < boundPotions; i++) {
+            if (listPotions[i].points > max) {
+                max = listPotions[i].points;
+            }
+        }
+        return max;
+    }
     
+    static int maxI(Item[] listItems, int boundItems) {
+        int max = listItems[0].experience;
+        for (int i = 1; i < boundItems; i++) {
+            if (listItems[i].experience > max) {
+                max = listItems[i].experience;
+            }
+        }
+        return max;
+    }
+    
+    static double minP(Potion[] listPotions, int boundPotions) {
+        double peor = listPotions[0].points;
+        for (int i = 1; i < boundPotions; i++) {
+            if (listPotions[i].points < peor) {
+                peor = listPotions[i].points;
+            }
+        }
+        return peor;
+    }
+    
+    static double minI(Item[] listItems, int boundItems){
+        double peor = listItems[0].experience;
+        for (int i = 1; i < boundItems; i++) {
+            if (listItems[i].experience < peor) {
+                peor = listItems[i].experience;
+            }
+        }
+        return peor;
+    } 
+
+} 
+
