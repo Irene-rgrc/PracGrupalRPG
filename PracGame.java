@@ -208,7 +208,7 @@ public class PracGame {
 
                 case 11:
                     System.out.println("+++GUARDAR ESTADO DEL PJ AL DISCO+++");
-
+                    guardarEstado(listPotions, boundPotions, listItems, boundItems);
                     break;
 
                 case 12:
@@ -467,4 +467,24 @@ public class PracGame {
         System.out.println("El tipo de pocima de la pócima es: " + listItems[id-1].type);
         System.out.println("Con una puntuacion de: " + listItems[id-1].experience);
     }
+
+    // CASO 8
+
+    // CASO 11
+    static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)throws FileNotFoundException, IOException, ClassNotFoundException {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("notas.dat"));
+            for (int i = 0; i < boundPotions; i++) {
+                out.writeObject((Potion) listPotions[i]);
+            }
+            for (int i = 0; i < boundItems; i++) {
+                out.writeObject((Item) listItems[i]);
+            }
+            out.close();
+            System.out.println("Fichero guardado con éxito");
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
+        }
+    }
 }
+
