@@ -203,7 +203,7 @@ public class PracGame {
                     switch (opcion) {
                         case 1:
                             System.out.println("---Guardar pocima en txt---");
-                            
+                            ficheroPotion(listPotions, boundPotions);
                             break;
                         case 2:
                             System.out.println("---Guardar item en txt---");
