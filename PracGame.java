@@ -194,7 +194,16 @@ public class PracGame {
 
                 case 8:
                     System.out.println("+++SUBIDA DE NIVEL+++");
-                    subirNivel(listPotions, boundPotions, puntos);
+                    //subirNivel(listPotions, boundPotions, puntos);
+                    for (int i = 0; i < boundPotions; i++) {
+                        listPotions[i].points = ((listPotions[i].points * puntos / 100) + listPotions[i].points);
+                        if (listPotions[i].points < 0) {
+                            listPotions[i].points = 0;
+                        } else if (listPotions[i].points > 10) {
+                            listPotions[i].points = 10;
+                        }
+                        System.out.println("El DJ  ha subido de nivel " + listPotions[i].points);
+                    }
                     break;
 
                 case 9:
@@ -489,7 +498,8 @@ public class PracGame {
     }
 
     // CASO 8
-    public static void subirNivel(Potion[] listPotions, int boundPotions,int puntos) {
+    /*
+    public static int subirNivel(Potion[] listPotions, int boundPotions,int puntos) {
         for (int i = 0; i < boundPotions; i++) {
             listPotions[i].points = ((listPotions[i].points * puntos / 100) + listPotions[i].points);
             if (listPotions[i].points < 0) {
@@ -497,10 +507,10 @@ public class PracGame {
             } else if (listPotions[i].points > 10) {
                 listPotions[i].points = 10;
             }
-            System.out.println("El DJ  ha subido de nivel " + listPotions[i].points); 
-        } 
-    }
-
+            System.out.println("El DJ  ha subido de nivel " + listPotions[i].points);
+            int puntaco = listPotions[i].points;
+        } return puntaco;
+    }*/
 
 
     // CASO 9
@@ -620,4 +630,3 @@ public class PracGame {
         }
     }
 }
-
