@@ -130,10 +130,10 @@ public class PracGame {
                         case 4:
                             System.out.println("---Enano---");
                             System.out.println("Que vas a anadir? 1-Pocima 2-Item");
-                            int a = entrada.nextInt();
-                            if (a ==1){
+                            int b = entrada.nextInt();
+                            if (b ==1){
                                 insertarPociones(listPotions, boundPotions, entrada);
-                            }else if (a == 2){
+                            }else if (b == 2){
                                 insertarItems(listItems, boundItems, entrada);
                             }else {
                                 System.out.println("Error, no se encuentra dentro del rango permitido");
@@ -292,7 +292,7 @@ public class PracGame {
         return max;
     }
     
-    static int minP(Potion[] listPotions, int boundPotions) {
+    static double minP(Potion[] listPotions, int boundPotions) {
         double peor = listPotions[0].points;
         for (int i = 1; i < boundPotions; i++) {
             if (listPotions[i].points < peor) {
@@ -302,7 +302,7 @@ public class PracGame {
         return peor;
     }
     
-    static int minI(Item[] listItems, int boundItems){
+    static double minI(Item[] listItems, int boundItems){
         double peor = listItems[0].experience;
         for (int i = 1; i < boundItems; i++) {
             if (listItems[i].experience < peor) {
@@ -342,7 +342,7 @@ public class PracGame {
         System.out.println("Introduzca el identificador del item: ");
         int id = entrada.nextInt();
         id = id-1;
-        for (int i = boundPotions; i>=id; i--) {
+        for (int i = boundItems; i>=id; i--) {
             listItems[i+1].id=(boundItems+2);
             listItems[i+1].name=listItems[i].name;
             listItems[i+1].description=listItems[i].description;
@@ -370,7 +370,7 @@ public class PracGame {
     static void eliminarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
         System.out.println("Introduzca el identificador de la pocima: ");
         int id = entrada.nextInt();
-        for (int i=0; i<=boundPotions, i++) {
+        for (int i=0; i<=boundPotions; i++) {
           listPotions[i].name = listPotions[i+1].name;
           listPotions[i].description = listPotions[i+1].description;
           listPotions[i].type = listPotions[i+1].type;
@@ -382,7 +382,7 @@ public class PracGame {
     static void eliminarItems(Item[] listItems, int boundItems, Scanner entrada) {
         System.out.println("Introduzca el identificador del item: ");
         int id = entrada.nextInt();
-        for (int i=0; i<=boundItems, i++) {
+        for (int i=0; i<=boundItems; i++) {
         listItems[i].name = listItems[i+1].name;
         listItems[i].description = listItems[i+1].description;
         listItems[i].type = listItems[i+1].type;
@@ -391,4 +391,4 @@ public class PracGame {
       boundItems--;
     }
 
-}
+} 
