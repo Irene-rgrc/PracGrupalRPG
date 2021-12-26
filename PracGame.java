@@ -31,7 +31,7 @@ public class PracGame {
         int option;
         int boundPotions = 0, boundItems = 0;
         int race;
-        int puntos;
+        int puntos = 0;
 
         // ARRAYS
         Potion[] listPotions = new Potion[MAXPOTIONS];
@@ -194,7 +194,7 @@ public class PracGame {
 
                 case 8:
                     System.out.println("+++SUBIDA DE NIVEL+++");
-
+                    subirNivel(listPotions, boundPotions, puntos);
                     break;
 
                 case 9:
@@ -260,8 +260,6 @@ public class PracGame {
         listPotions[boundPotions].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[boundPotions].points = entrada.nextInt();
-        // out.write("Id: " + id + " Name: " + name + " Descripcion:" + description + "
-        // Type:" + type + "\n");
         return boundPotions + 1;
     }
 
@@ -330,8 +328,7 @@ public class PracGame {
         boundItems++;
     }
 
-    // CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela
-    // a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
+    // CASE 3 
     static int usarPocion(Potion[] listPotions, int boundPotions) {
         int punto = listPotions[0].points;
         System.out.println("Has usado la pócima: " + listPotions[0].name);
@@ -492,6 +489,19 @@ public class PracGame {
     }
 
     // CASO 8
+    public static void subirNivel(Potion[] listPotions, int boundPotions,int puntos) {
+        for (int i = 0; i < boundPotions; i++) {
+            listPotions[i].points = ((listPotions[i].points * puntos / 100) + listPotions[i].points);
+            if (listPotions[i].points < 0) {
+                listPotions[i].points = 0;
+            } else if (listPotions[i].points > 10) {
+                listPotions[i].points = 10;
+            }
+            System.out.println("El DJ  ha subido de nivel " + listPotions[i].points); 
+        } 
+    }
+
+
 
     // CASO 9
     static void ficheroPotion(Potion[] listPotions, int boundPotions) {
@@ -610,3 +620,4 @@ public class PracGame {
         }
     }
 }
+
