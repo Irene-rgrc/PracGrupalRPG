@@ -236,7 +236,7 @@ public class PracGame {
 
                 case 12:
                     System.out.println("+++CARGAR PJ+++");
-
+                    leerEstado();
                     break;
 
                 default:
@@ -579,7 +579,34 @@ public class PracGame {
     }
 
     // CASO 12
-
+    static void leerEstado () throws ClassNotFoundException{   
+        //Pociones
+        try {
+            Potion potion;
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("pocimas.dat"));
+            potion = (Potion) in.readObject();
+            while (potion != null){
+                System.out.println("Nombre: " + potion.name);
+                System.out.println("Descripcion: " + potion.description);
+                System.out.println("Puntos: " + potion.points);
+                potion = (Potion) in.readObject();  
+            }
+        } catch (IOException e2){
+            System.out.println(" ");
+        }
+        // Items
+        try {
+            Item items;
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.dat"));
+            items = (Item) in.readObject();
+            while (items != null){
+                System.out.println("Nombre: " + items.name);
+                System.out.println("Descripcion: " + items.description);
+                System.out.println("Experiencia: " + items.experience);
+                items = (Item) in.readObject();  
+            }
+        } catch (IOException e2){
+            System.out.println(" ");
+        }
+    }
 }
-
-
