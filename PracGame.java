@@ -159,11 +159,11 @@ public class PracGame {
                     if (a == 1) {
                         System.out.println("Introduzca el identificador de la pocima: ");
                         int id = entrada.nextInt();
-                        eliminarPociones(listPotions, boundPotions, id);
+                        boundPotions = eliminarPociones(listPotions, boundPotions, id);
                     } else if (a == 2) {
                         System.out.println("Introduzca el identificador del item: ");
                         int id = entrada.nextInt();
-                        eliminarItems(listItems, boundItems, id);
+                        boundItems = eliminarItems(listItems, boundItems, id);
                     } else {
                         System.out.println("Error, no se encuentra dentro del rango permitido");
                     }
@@ -304,34 +304,34 @@ public class PracGame {
     //CASE 3 -> Usar la pocion tendriamos que leer la exp de la pocion y sumarsela a un contador gobal de experiencia <- 10 como max (FINAL EXPERIENCE)
     static int usarPocion(Potion[] listPotions, int boundPotions) {
         int punto = listPotions[0].points; 
-        eliminarPociones(listPotions, boundPotions, 1);
+        System.out.println("Has usado la pócima: " + listPotions[0].name);
+        System.out.println("Con una descripcion de: " + listPotions[0].description);
+        System.out.println("El tipo de pocima de la pócima es: " + listPotions[0].type);
+        System.out.println("Con una puntuacion de: " + listPotions[0].points);
+        boundPotions = eliminarPociones(listPotions, boundPotions, 1);
         return punto;
     }
     
     //CASE 4
 
-    static void eliminarPociones(Potion[] listPotions, int boundPotions, int id) {
-        //System.out.println("Introduzca el identificador de la pocima: ");
-        //int id = entrada.nextInt();
+    static int eliminarPociones(Potion[] listPotions, int boundPotions, int id) {
         for (int i=(id-1); i<=boundPotions; i++) {
           listPotions[i].name = listPotions[i+1].name;
           listPotions[i].description = listPotions[i+1].description;
           listPotions[i].type = listPotions[i+1].type;
           listPotions[i].points = listPotions[i+1].points;
         }
-      boundPotions--;
+      return boundPotions--;
     } 
 
-    static void eliminarItems(Item[] listItems, int boundItems, int id) {
-        //System.out.println("Introduzca el identificador del item: ");
-        //int id = entrada.nextInt();
+    static int eliminarItems(Item[] listItems, int boundItems, int id) {
         for (int i=(id-1); i<=boundItems; i++) {
         listItems[i].name = listItems[i+1].name;
         listItems[i].description = listItems[i+1].description;
         listItems[i].type = listItems[i+1].type;
         listItems[i].experience = listItems[i+1].experience;
         }
-      boundItems--;
+      return boundItems--;
     }
     
     // CASE 5
@@ -402,4 +402,3 @@ public class PracGame {
     } 
 
 } 
-
