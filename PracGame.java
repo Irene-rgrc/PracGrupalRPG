@@ -101,7 +101,7 @@ public class PracGame {
 
                 case 2:
                     System.out.println("+++INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA+++");
-                    int opti;
+               
                     System.out.println("---Cual es la raza de tu personaje?---");
                     System.out.println("1:Humano  2:Orco  3:Elfo  4:Enano");
                     race = entrada.nextInt();
