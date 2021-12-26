@@ -179,7 +179,8 @@ public class PracGame {
                     break;
 
                 case 6:
-                    System.out.println("+++MOSTRAR ITEMS ORDENADOS ALFABETICAMENTE POR EL NOMBRE DEL PRIMER ELEMNETO+++");
+                    System.out
+                            .println("+++MOSTRAR ITEMS ORDENADOS ALFABETICAMENTE POR EL NOMBRE DEL PRIMER ELEMNETO+++");
                     ordenarAlfabaItems(listItems, boundItems);
                     ordenarAlfabaPocima(listPotions, boundPotions);
                     break;
@@ -198,7 +199,7 @@ public class PracGame {
 
                 case 9:
                     System.out.println("+++GUARDAR TODAS LAS PÓCIMAS E ÍTEMS A FICHERO DE TEXTO+++");
-                    System.out.println("1 Para pócimas  2 Para items  3 Para Salir");
+                    System.out.println("1 Para pócimas  2 Para items  3 Ambos 4 Para Salir");
                     opcion = entrada.nextInt();
                     switch (opcion) {
                         case 1:
@@ -210,12 +211,16 @@ public class PracGame {
                             ficheroItems(listItems, boundItems);
                             break;
                         case 3:
+                            System.out.println("--- GUARDAR POCIMA E ITEM ---");
+                            ficheroPotion(listPotions, boundPotions);
+                            ficheroItems(listItems, boundItems);
+                            break;
+                        case 4:
                             System.out.println("+++SALIENDO+++");
                             break;
                         default:
                             System.out.println("La opción introducida es incorrecta.");
                     }
-
                     break;
 
                 case 10:
@@ -346,7 +351,7 @@ public class PracGame {
             listPotions[i].type = listPotions[i + 1].type;
             listPotions[i].points = listPotions[i + 1].points;
         }
-        return (boundPotions-1);
+        return (boundPotions - 1);
     }
 
     static int eliminarItems(Item[] listItems, int boundItems, int id) {
@@ -356,7 +361,7 @@ public class PracGame {
             listItems[i].type = listItems[i + 1].type;
             listItems[i].experience = listItems[i + 1].experience;
         }
-        return (boundItems-1);
+        return (boundItems - 1);
     }
 
     // CASE 5
@@ -471,26 +476,25 @@ public class PracGame {
     static void buscarPocion(Potion[] listPotions, int boundPotions, Scanner entrada) {
         System.out.println("Introduzca el identificador de la pocion: ");
         int id = entrada.nextInt();
-        System.out.println("La pócima es: " + listPotions[id-1].name);
-        System.out.println("Con una descripcion de: " + listPotions[id-1].description);
-        System.out.println("El tipo de pocima de la pócima es: " + listPotions[id-1].type);
-        System.out.println("Con una puntuacion de: " + listPotions[id-1].points);
+        System.out.println("La pócima es: " + listPotions[id - 1].name);
+        System.out.println("Con una descripcion de: " + listPotions[id - 1].description);
+        System.out.println("El tipo de pocima de la pócima es: " + listPotions[id - 1].type);
+        System.out.println("Con una puntuacion de: " + listPotions[id - 1].points);
     }
 
     static void buscarItem(Item[] listItems, int boundItems, Scanner entrada) {
         System.out.println("Introduzca el identificador del item: ");
         int id = entrada.nextInt();
-        System.out.println("La pócima es: " + listItems[id-1].name);
-        System.out.println("Con una descripcion de: " + listItems[id-1].description);
-        System.out.println("El tipo de pocima de la pócima es: " + listItems[id-1].type);
-        System.out.println("Con una puntuacion de: " + listItems[id-1].experience);
+        System.out.println("La pócima es: " + listItems[id - 1].name);
+        System.out.println("Con una descripcion de: " + listItems[id - 1].description);
+        System.out.println("El tipo de pocima de la pócima es: " + listItems[id - 1].type);
+        System.out.println("Con una puntuacion de: " + listItems[id - 1].experience);
     }
 
     // CASO 8
 
-
     // CASO 9
-    static void ficheroPotion(Potion[] listPotions, int boundPotions){
+    static void ficheroPotion(Potion[] listPotions, int boundPotions) {
         try {
             ObjectOutputStream out = null;
             out = new ObjectOutputStream(new FileOutputStream("pociones.txt", true));
@@ -498,12 +502,12 @@ public class PracGame {
                 out.writeObject((Potion) listPotions[i]);
             }
             out.close();
-        } catch(IOException e1){
+        } catch (IOException e1) {
             System.out.println(e1.getMessage());
         }
     }
 
-    static void ficheroItems(Item[] listItems, int boundItems){
+    static void ficheroItems(Item[] listItems, int boundItems) {
         try {
             ObjectOutputStream out = null;
             out = new ObjectOutputStream(new FileOutputStream("items.txt", true));
@@ -511,46 +515,47 @@ public class PracGame {
                 out.writeObject((Item) listItems[i]);
             }
             out.close();
-        } catch(IOException e1){
+        } catch (IOException e1) {
             System.out.println(e1.getMessage());
         }
     }
 
     // CASO 10
-    static void leerFicheroPotions () throws ClassNotFoundException{   
+    static void leerFicheroPotions() throws ClassNotFoundException {
         try {
             Potion potion;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pociones.txt"));
             potion = (Potion) in.readObject();
-            while (potion != null){
+            while (potion != null) {
                 System.out.println("Nombre: " + potion.name);
                 System.out.println("Descripcion: " + potion.description);
                 System.out.println("Puntos: " + potion.points);
-                potion = (Potion) in.readObject();  
+                potion = (Potion) in.readObject();
             }
-        } catch (IOException e2){
+        } catch (IOException e2) {
             System.out.println(" ");
         }
     }
 
-    static void leerFicheroItems () throws ClassNotFoundException{   
+    static void leerFicheroItems() throws ClassNotFoundException {
         try {
             Item items;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.txt"));
             items = (Item) in.readObject();
-            while (items != null){
+            while (items != null) {
                 System.out.println("Nombre: " + items.name);
                 System.out.println("Descripcion: " + items.description);
                 System.out.println("Puntos: " + items.experience);
-                items = (Item) in.readObject();  
+                items = (Item) in.readObject();
             }
-        } catch (IOException e2){
+        } catch (IOException e2) {
             System.out.println(" ");
         }
     }
 
     // CASO 11
-    static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)throws FileNotFoundException, IOException, ClassNotFoundException {
+    static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)
+            throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
             for (int i = 0; i < boundPotions; i++) {
@@ -574,6 +579,7 @@ public class PracGame {
     }
 
     // CASO 12
-    
+
 }
+
 
