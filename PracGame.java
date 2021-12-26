@@ -327,7 +327,7 @@ public class PracGame {
             listPotions[i].type = listPotions[i + 1].type;
             listPotions[i].points = listPotions[i + 1].points;
         }
-        return boundPotions--;
+        return (boundPotions-1);
     }
 
     static int eliminarItems(Item[] listItems, int boundItems, int id) {
@@ -337,7 +337,7 @@ public class PracGame {
             listItems[i].type = listItems[i + 1].type;
             listItems[i].experience = listItems[i + 1].experience;
         }
-        return boundItems--;
+        return (boundItems-1);
     }
 
     // CASE 5
@@ -448,4 +448,3 @@ public class PracGame {
         }
     }
 }
-
