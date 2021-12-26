@@ -470,6 +470,21 @@ public class PracGame {
 
     // CASO 8
 
+    // CASO 9
+    static void ficheroPotion(Potion[] listPotions, int boundPotions){
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter("pociones.txt", true));
+            for (int i = 0; i < boundPotions; i++) {
+                out.write((Potion) listPotions[i]);
+            }
+            out.close();
+        } catch(IOException e1){
+            System.out.println(e1.getMessage());
+        }
+    }
+
+    // CASO 10
+
     // CASO 11
     static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
@@ -487,4 +502,5 @@ public class PracGame {
         }
     }
 }
+
 
