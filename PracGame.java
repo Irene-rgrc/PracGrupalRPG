@@ -221,6 +221,7 @@ public class PracGame {
                 case 10:
                     System.out.println("+++CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO+++");
                     leerFicheroPotions();
+                    leerFicheroItems();
                     break;
 
                 case 11:
@@ -532,6 +533,22 @@ public class PracGame {
         }
     }
 
+    static void leerFicheroItems () throws ClassNotFoundException{   
+        try {
+            Item items;
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.txt"));
+            items = (Item) in.readObject();
+            while (items != null){
+                System.out.println("Nombre: " + items.name);
+                System.out.println("Descripcion: " + items.description);
+                System.out.println("Puntos: " + items.experience);
+                items = (Item) in.readObject();  
+            }
+        } catch (IOException e2){
+            System.out.println(" ");
+        }
+    }
+
     // CASO 11
     static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
@@ -558,6 +575,5 @@ public class PracGame {
 
     // CASO 12
     
-
 }
 
