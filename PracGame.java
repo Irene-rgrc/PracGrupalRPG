@@ -313,7 +313,7 @@ public class PracGame {
     static void eliminarPociones(Potion[] listPotions, int boundPotions, int id) {
         //System.out.println("Introduzca el identificador de la pocima: ");
         //int id = entrada.nextInt();
-        for (int i=id; i<=boundPotions; i++) {
+        for (int i=(id-1); i<=boundPotions; i++) {
           listPotions[i].name = listPotions[i+1].name;
           listPotions[i].description = listPotions[i+1].description;
           listPotions[i].type = listPotions[i+1].type;
