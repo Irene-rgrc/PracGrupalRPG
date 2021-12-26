@@ -198,6 +198,23 @@ public class PracGame {
 
                 case 9:
                     System.out.println("+++GUARDAR TODAS LAS PÓCIMAS E ÍTEMS A FICHERO DE TEXTO+++");
+                    System.out.println("1 Para pócimas  2 Para items  3 Para Salir");
+                    opcion = entrada.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            System.out.println("---Guardar pocima en txt---");
+                            
+                            break;
+                        case 2:
+                            System.out.println("---Guardar item en txt---");
+                            
+                            break;
+                        case 3:
+                            System.out.println("+++SALIENDO+++");
+                            break;
+                        default:
+                            System.out.println("La opción introducida es incorrecta.");
+                    }
 
                     break;
 
@@ -473,9 +490,10 @@ public class PracGame {
     // CASO 9
     static void ficheroPotion(Potion[] listPotions, int boundPotions){
         try {
-            BufferedWriter out = new BufferedWriter(new FileWriter("pociones.txt", true));
+            ObjectOutputStream out = null;
+            out = new ObjectOutputStream(new FileOutputStream("pociones.txt", true));
             for (int i = 0; i < boundPotions; i++) {
-                out.write((Potion) listPotions[i]);
+                out.writeObject((Potion) listPotions[i]);
             }
             out.close();
         } catch(IOException e1){
@@ -488,10 +506,17 @@ public class PracGame {
     // CASO 11
     static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("notas.dat"));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
             for (int i = 0; i < boundPotions; i++) {
                 out.writeObject((Potion) listPotions[i]);
             }
+            out.close();
+            System.out.println("Fichero guardado con éxito");
+        } catch (IOException e1) {
+            System.out.println(e1.getMessage());
+        }
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("items.dat"));
             for (int i = 0; i < boundItems; i++) {
                 out.writeObject((Item) listItems[i]);
             }
@@ -501,6 +526,10 @@ public class PracGame {
             System.out.println(e1.getMessage());
         }
     }
-}
 
+    // CASO 12
+
+
+
+}
 
