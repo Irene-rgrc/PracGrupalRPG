@@ -104,8 +104,8 @@ public class PracGame {
                     int opti;
                     System.out.println("---Cual es la raza de tu personaje?---");
                     System.out.println("1:Humano  2:Orco  3:Elfo  4:Enano");
-                    opti = entrada.nextInt();
-                    switch (opti) {
+                    race = entrada.nextInt();
+                    switch (race) {
                         case 1:
                             System.out.println("---Humano---");
                             System.out.println(
