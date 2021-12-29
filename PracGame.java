@@ -498,19 +498,26 @@ public class PracGame {
     }
 
     // CASO 8
-    /*
-    public static int subirNivel(Potion[] listPotions, int boundPotions,int puntos) {
+     public static int subirNivelP(Potion[] listPotions, int boundPotions, int puntos, int EXPERIENCE) {
+        int subidaP;
         for (int i = 0; i < boundPotions; i++) {
-            listPotions[i].points = ((listPotions[i].points * puntos / 100) + listPotions[i].points);
-            if (listPotions[i].points < 0) {
-                listPotions[i].points = 0;
-            } else if (listPotions[i].points > 10) {
-                listPotions[i].points = 10;
-            }
-            System.out.println("El DJ  ha subido de nivel " + listPotions[i].points);
-            int puntaco = listPotions[i].points;
-        } return puntaco;
-    }*/
+            listPotions[i].points = listPotions[i].points + EXPERIENCE;
+            subidaP = listPotions[i].points;
+        }
+        System.out.println("El PJ  ha subido de nivel ");
+
+    } return subidaP ;
+
+    public static int subirNivelI(Item[] listItems, int boundItems, int puntos, int EXPERIENCE) {
+        int subidaI;
+        for (int i = 0; i < boundItems; i++) {
+            listItems[i].experience = listItems[i].experience + EXPERIENCE;
+            subidaI = listItems[i].experience;
+        }
+        System.out.println("El PJ  ha subido de nivel ");
+
+    } return subidaI ;
+
 
 
     // CASO 9
