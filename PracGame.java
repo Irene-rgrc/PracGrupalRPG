@@ -101,7 +101,7 @@ public class PracGame {
 
                 case 2:
                     System.out.println("+++INSERTAR PÓCIMA O ÍTEM EN POSICIÓN DETERMINADA+++");
-               
+
                     System.out.println("---Cual es la raza de tu personaje?---");
                     System.out.println("1:Humano  2:Orco  3:Elfo  4:Enano");
                     race = entrada.nextInt();
@@ -194,16 +194,8 @@ public class PracGame {
 
                 case 8:
                     System.out.println("+++SUBIDA DE NIVEL+++");
-                    //subirNivel(listPotions, boundPotions, puntos);
-                    for (int i = 0; i < boundPotions; i++) {
-                        listPotions[i].points = ((listPotions[i].points * puntos / 100) + listPotions[i].points);
-                        if (listPotions[i].points < 0) {
-                            listPotions[i].points = 0;
-                        } else if (listPotions[i].points > 10) {
-                            listPotions[i].points = 10;
-                        }
-                        System.out.println("El DJ  ha subido de nivel " + listPotions[i].points);
-                    }
+                    subirNivelP(listPotions, boundPotions, puntos, EXPERIENCE);
+                    subirNivelI(listItems, boundItems, puntos, EXPERIENCE);
                     break;
 
                 case 9:
@@ -337,7 +329,7 @@ public class PracGame {
         boundItems++;
     }
 
-    // CASE 3 
+    // CASE 3
     static int usarPocion(Potion[] listPotions, int boundPotions) {
         int punto = listPotions[0].points;
         System.out.println("Has usado la pócima: " + listPotions[0].name);
@@ -459,8 +451,9 @@ public class PracGame {
     }
 
     static void ordenarAlfabaPocima(Potion[] listPotions, int boundPotions) {
-        String temp;
-        for (int i = 0; i < boundPotions; i++) {
+        String temp; boolean flag=true;
+        for (int i = 0; i < boundPotions && flag==true; i++) {
+            flag=false;
             for (int j = i + 1; j < boundPotions; j++) {
                 // to compare one string with other strings
                 if (listPotions[i].name.compareToIgnoreCase(listPotions[j].name) > 0) {
@@ -468,8 +461,9 @@ public class PracGame {
                     temp = listPotions[i].name;
                     listPotions[i].name = listPotions[j].name;
                     listPotions[j].name = temp;
+                    flag = true;
                 }
-            }
+            }            
         }
         // print output array
         System.out.println("Las pociones alfabeticamente son: ");
@@ -498,8 +492,8 @@ public class PracGame {
     }
 
     // CASO 8
-     public static int subirNivelP(Potion[] listPotions, int boundPotions, int puntos, int EXPERIENCE) {
-        int subidaP;
+    public static int subirNivelP(Potion[] listPotions, int boundPotions, int puntos, int EXPERIENCE) {
+        int subidaP = 0;
         for (int i = 0; i < boundPotions; i++) {
             listPotions[i].points = listPotions[i].points + EXPERIENCE;
             subidaP = listPotions[i].points;
@@ -509,7 +503,7 @@ public class PracGame {
     } 
 
     public static int subirNivelI(Item[] listItems, int boundItems, int puntos, int EXPERIENCE) {
-        int subidaI;
+        int subidaI = 0;
         for (int i = 0; i < boundItems; i++) {
             listItems[i].experience = listItems[i].experience + EXPERIENCE;
             subidaI = listItems[i].experience;
@@ -517,8 +511,6 @@ public class PracGame {
         System.out.println("El PJ  ha subido de nivel ");
         return subidaI ;
     } 
-
-
 
     // CASO 9
     static void ficheroPotion(Potion[] listPotions, int boundPotions) {
@@ -606,19 +598,19 @@ public class PracGame {
     }
 
     // CASO 12
-    static void leerEstado () throws ClassNotFoundException{   
-        //Pociones
+    static void leerEstado() throws ClassNotFoundException {
+        // Pociones
         try {
             Potion potion;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pocimas.dat"));
             potion = (Potion) in.readObject();
-            while (potion != null){
+            while (potion != null) {
                 System.out.println("Nombre: " + potion.name);
                 System.out.println("Descripcion: " + potion.description);
                 System.out.println("Puntos: " + potion.points);
-                potion = (Potion) in.readObject();  
+                potion = (Potion) in.readObject();
             }
-        } catch (IOException e2){
+        } catch (IOException e2) {
             System.out.println(" ");
         }
         // Items
@@ -626,14 +618,15 @@ public class PracGame {
             Item items;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.dat"));
             items = (Item) in.readObject();
-            while (items != null){
+            while (items != null) {
                 System.out.println("Nombre: " + items.name);
                 System.out.println("Descripcion: " + items.description);
                 System.out.println("Experiencia: " + items.experience);
-                items = (Item) in.readObject();  
+                items = (Item) in.readObject();
             }
-        } catch (IOException e2){
+        } catch (IOException e2) {
             System.out.println(" ");
         }
     }
 }
+
