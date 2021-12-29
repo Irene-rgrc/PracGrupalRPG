@@ -505,8 +505,8 @@ public class PracGame {
             subidaP = listPotions[i].points;
         }
         System.out.println("El PJ  ha subido de nivel ");
-
-    } return subidaP ;
+        return subidaP ;
+    } 
 
     public static int subirNivelI(Item[] listItems, int boundItems, int puntos, int EXPERIENCE) {
         int subidaI;
@@ -515,8 +515,8 @@ public class PracGame {
             subidaI = listItems[i].experience;
         }
         System.out.println("El PJ  ha subido de nivel ");
-
-    } return subidaI ;
+        return subidaI ;
+    } 
 
 
 
