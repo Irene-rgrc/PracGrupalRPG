@@ -226,8 +226,8 @@ public class PracGame {
 
                 case 10:
                     System.out.println("+++CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO+++");
-                    leerFicheroPotions();
-                    leerFicheroItems();
+                    leerFicheroPotions(listPotions, boundPotions);
+                    leerFicheroItems(listItems, boundItems);
                     break;
 
                 case 11:
@@ -564,7 +564,7 @@ public class PracGame {
 
     // CASO 10
     // Lee los ficheros de Potion e Items correspondientes y los saca por pantalla.
-    static void leerFicheroPotions() throws ClassNotFoundException {
+    static void leerFicheroPotions(Potion[] listPotions, int boundPotions) throws ClassNotFoundException {
         try {
             Potion potion;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pociones.txt"));
@@ -580,7 +580,7 @@ public class PracGame {
         }
     }
 
-    static void leerFicheroItems() throws ClassNotFoundException {
+    static void leerFicheroItems(Item[] listItems, int boundItems) throws ClassNotFoundException {
         try {
             Item items;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.txt"));
@@ -632,23 +632,25 @@ public class PracGame {
         // Pociones
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pocimas.dat"));
-            boundPotions = (int) in.readObject;
+            boundPotions = (int) in.readObject();
             for (int i = 0; i < boundPotions; i++) {
-                listPotions[i]= (potion) in.readObject;
+                listPotions[i]= (Potion) in.readObject();
             }
+            in.close();
         } catch (IOException e2) {
             System.out.println(" ");
         }
         // Items
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.dat"));
-            boundItems = (int) in.readObject;
+            boundItems = (int) in.readObject();
             for (int i = 0; i < boundItems; i++) {
-                listItems[i]= (item) in.readObject;
+                listItems[i]= (Item) in.readObject();
             }
         } catch (IOException e2) {
             System.out.println(" ");
         }
     }
 }
+
 
