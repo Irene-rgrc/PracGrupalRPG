@@ -251,6 +251,7 @@ public class PracGame {
     // crearPociones y crearItems utiliza la clase scanner para que el usuario sea capaz de introduccir los parametros que desee. Estos parametros se introduciran en la clase en su correspondiente array.
 
     static int crearPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        if(boundPotions<11){
         listPotions[boundPotions].id = boundPotions + 1;
         System.out.println("El identificador de la pocion es: " + listPotions[boundPotions].id);
         entrada.nextLine();
@@ -262,10 +263,14 @@ public class PracGame {
         listPotions[boundPotions].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[boundPotions].points = entrada.nextInt();
+        }
+        else{
+        System.out.println("Se ha alcanzado el máximo de pociones.");}
         return boundPotions + 1;
     }
 
     static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
+        if(boundItems<6){
         System.out.println("El identificador del item es" + (boundItems + 1));
         listItems[boundItems].id = (boundItems + 1);
         entrada.nextLine();
@@ -277,6 +282,10 @@ public class PracGame {
         listItems[boundItems].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[boundItems].experience = entrada.nextInt();
+        }
+        else{
+        System.out.println("Se ha alcanzado el máximo de items.");
+        }
         return boundItems + 1;
     }
 
