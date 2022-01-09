@@ -367,7 +367,7 @@ public class PracGame {
     }
 
     static int eliminarItems(Item[] listItems, int boundItems, int id) {
-        for (int i = (id - 1); i <= boundItems; i++) {
+        for (int i = (id - 1); i < boundItems; i++) {
             listItems[i].name = listItems[i + 1].name;
             listItems[i].description = listItems[i + 1].description;
             listItems[i].type = listItems[i + 1].type;
