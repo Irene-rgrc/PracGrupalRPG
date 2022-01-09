@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -237,7 +238,8 @@ public class PracGame {
 
                 case 12:
                     System.out.println("+++CARGAR PJ+++");
-                    leerEstado(listPotions, boundPotions, listItems, boundItems);
+                    boundPotions = leerEstadoPotion(listPotions, boundPotions);
+                    boundItems = leerEstadoItems(listItems, boundItems);
                     break;
 
                 default:
@@ -382,11 +384,12 @@ public class PracGame {
         System.out.println("El número de pocimas son:" + (boundPotions));
         System.out.println("La pócima con mayor número de puntos es: " + maxP(listPotions, boundPotions));
         System.out.println("La pócima con mayor número de puntos es: " + minP(listPotions, boundPotions));
-        for (int i = 0; i < boundPotions; i++) {
+        for (int i = 0; i <= boundPotions; i++) {
             System.out.println("El nombre de la pócima: " + listPotions[i].name);
             System.out.println("La descripción de la pócima: " + listPotions[i].description);
             System.out.println("El tipo de pocima de la pócima: " + listPotions[i].type);
             System.out.println("La puntuación de la pócima: " + listPotions[i].points);
+            System.out.println("");
         }
         System.out.println("");
     }
@@ -395,7 +398,7 @@ public class PracGame {
         System.out.println("El número de ítems son:" + (boundItems));
         System.out.println("El ítem con mayor experiencia es: " + maxI(listItems, boundItems));
         System.out.println("El ítem con menor experiencia es: " + minI(listItems, boundItems));
-        for (int i = 0; i < boundItems; i++) {
+        for (int i = 0; i <= boundItems; i++) {
             System.out.println("El nombre de la pócima: " + listItems[i].name);
             System.out.println("La descripción de la pócima: " + listItems[i].description);
             System.out.println("El tipo de pocima de la pócima: " + listItems[i].type);
@@ -603,7 +606,7 @@ public class PracGame {
             throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
-            out.writeObject(boundPotions);
+            out.writeObject((int)boundPotions);
             for (int i = 0; i < boundPotions; i++) {
                 out.writeObject((Potion) listPotions[i]);
             }
@@ -614,7 +617,7 @@ public class PracGame {
         }
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("items.dat"));
-            out.writeObject(boundItems);
+            out.writeObject((int)boundItems);
             for (int i = 0; i < boundItems; i++) {
                 out.writeObject((Item) listItems[i]);
             }
@@ -622,13 +625,13 @@ public class PracGame {
             System.out.println("Fichero guardado con éxito");
         } catch (IOException e1) {
             System.out.println(e1.getMessage());
-        }
+        } 
     }
 
     // CASO 12
     // Lee fichero binario de Potion e Items correspondientes y lo saca por pantalla.
 
-    static void leerEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems) throws ClassNotFoundException {
+    static int leerEstadoPotion(Potion[] listPotions, int boundPotions) throws ClassNotFoundException {
         // Pociones
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pocimas.dat"));
@@ -640,6 +643,10 @@ public class PracGame {
         } catch (IOException e2) {
             System.out.println(" ");
         }
+        return boundPotions;
+    }
+
+    static int leerEstadoItems( Item[] listItems, int boundItems) throws ClassNotFoundException {
         // Items
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.dat"));
@@ -650,7 +657,6 @@ public class PracGame {
         } catch (IOException e2) {
             System.out.println(" ");
         }
+        return boundItems;
     }
 }
-
-
