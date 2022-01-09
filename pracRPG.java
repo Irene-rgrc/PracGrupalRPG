@@ -258,7 +258,7 @@ public class PracGame {
         listPotions[boundPotions].name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
         listPotions[boundPotions].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de pocima: 1-Vida 2-Fuerza 3-Defensa");
         listPotions[boundPotions].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[boundPotions].points = entrada.nextInt();
@@ -301,7 +301,7 @@ public class PracGame {
         listPotions[id].name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
         listPotions[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de pocima: 1-Vida 2-Fuerza 3-Defensa");
         listPotions[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[id].points = entrada.nextInt();
@@ -325,7 +325,7 @@ public class PracGame {
         listItems[id].name = entrada.nextLine();
         System.out.println("Introduzca la descripción del item");
         listItems[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de item: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de item: 1-Vida 2-Fuerza 3-Defensa");
         listItems[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[id].experience = entrada.nextInt();
