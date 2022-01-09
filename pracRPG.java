@@ -237,7 +237,7 @@ public class PracGame {
 
                 case 12:
                     System.out.println("+++CARGAR PJ+++");
-                    leerEstado();
+                    leerEstado(listPotions, boundPotions, listItems, boundItems);
                     break;
 
                 default:
@@ -603,6 +603,7 @@ public class PracGame {
             throws FileNotFoundException, IOException, ClassNotFoundException {
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
+            out.writeObject(boundPotions);
             for (int i = 0; i < boundPotions; i++) {
                 out.writeObject((Potion) listPotions[i]);
             }
@@ -613,6 +614,7 @@ public class PracGame {
         }
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("items.dat"));
+            out.writeObject(boundItems);
             for (int i = 0; i < boundItems; i++) {
                 out.writeObject((Item) listItems[i]);
             }
@@ -626,31 +628,23 @@ public class PracGame {
     // CASO 12
     // Lee fichero binario de Potion e Items correspondientes y lo saca por pantalla.
 
-    static void leerEstado() throws ClassNotFoundException {
+    static void leerEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems) throws ClassNotFoundException {
         // Pociones
         try {
-            Potion potion;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pocimas.dat"));
-            potion = (Potion) in.readObject();
-            while (potion != null) {
-                System.out.println("Nombre: " + potion.name);
-                System.out.println("Descripcion: " + potion.description);
-                System.out.println("Puntos: " + potion.points);
-                potion = (Potion) in.readObject();
+            boundPotions = (int) in.readObject;
+            for (int i = 0; i < boundPotions; i++) {
+                listPotions[i]= (potion) in.readObject;
             }
         } catch (IOException e2) {
             System.out.println(" ");
         }
         // Items
         try {
-            Item items;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.dat"));
-            items = (Item) in.readObject();
-            while (items != null) {
-                System.out.println("Nombre: " + items.name);
-                System.out.println("Descripcion: " + items.description);
-                System.out.println("Experiencia: " + items.experience);
-                items = (Item) in.readObject();
+            boundItems = (int) in.readObject;
+            for (int i = 0; i < boundItems; i++) {
+                listItems[i]= (item) in.readObject;
             }
         } catch (IOException e2) {
             System.out.println(" ");
