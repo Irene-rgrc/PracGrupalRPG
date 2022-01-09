@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.io.*;
+import java.util.Scanner;
 
 //CLASES
 class Potion implements Serializable {
@@ -226,8 +226,8 @@ public class PracGame {
 
                 case 10:
                     System.out.println("+++CARGAR SITUACIÓN DE LA ÚLTIMA PARTIDA DESDE FICHERO DE TEXTO+++");
-                    leerFicheroPotions();
-                    leerFicheroItems();
+                    leerFicheroPotions(listPotions, boundPotions);
+                    leerFicheroItems(listItems, boundItems);
                     break;
 
                 case 11:
@@ -237,7 +237,7 @@ public class PracGame {
 
                 case 12:
                     System.out.println("+++CARGAR PJ+++");
-                    leerEstado();
+                    leerEstado(listPotions, boundPotions, listItems, boundItems);
                     break;
 
                 default:
@@ -248,8 +248,10 @@ public class PracGame {
     }
 
     // CASE 1
+    // crearPociones y crearItems utiliza la clase scanner para que el usuario sea capaz de introduccir los parametros que desee. Estos parametros se introduciran en la clase en su correspondiente array.
 
     static int crearPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
+        if(boundPotions<=10){
         listPotions[boundPotions].id = boundPotions + 1;
         System.out.println("El identificador de la pocion es: " + listPotions[boundPotions].id);
         entrada.nextLine();
@@ -257,14 +259,17 @@ public class PracGame {
         listPotions[boundPotions].name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
         listPotions[boundPotions].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de pocima: 1-Vida 2-Fuerza 3-Defensa");
         listPotions[boundPotions].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[boundPotions].points = entrada.nextInt();
+        }else{
+        System.out.println("Se ha alcanzado el máximo de pociones.");}
         return boundPotions + 1;
     }
 
     static int crearItems(Item[] listItems, int boundItems, Scanner entrada) {
+        if(boundItems<6){
         System.out.println("El identificador del item es" + (boundItems + 1));
         listItems[boundItems].id = (boundItems + 1);
         entrada.nextLine();
@@ -276,10 +281,16 @@ public class PracGame {
         listItems[boundItems].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[boundItems].experience = entrada.nextInt();
+        }
+        else{
+        System.out.println("Se ha alcanzado el máximo de items.");
+        }
         return boundItems + 1;
     }
 
     // CASE 2
+    // Igual que el caso 1 pero elegimos mediante el id la posicion. Un subprograma es para editar la clase Pociones(insertarPociones) y la otra la de Items (insertarItems). Usamos un bucle FOR para encontrar los datos del id correspondiente y sumerles una posicion a la derecha, para que asi no se eliminen los datos anteriores.
+
 
     static void insertarPociones(Potion[] listPotions, int boundPotions, Scanner entrada) {
         System.out.println("Introduzca el identificador de la pocima: ");
@@ -298,7 +309,7 @@ public class PracGame {
         listPotions[id].name = entrada.nextLine();
         System.out.println("Introduzca la descripción de la pocima");
         listPotions[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de pocima: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de pocima: 1-Vida 2-Fuerza 3-Defensa");
         listPotions[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listPotions[id].points = entrada.nextInt();
@@ -322,7 +333,7 @@ public class PracGame {
         listItems[id].name = entrada.nextLine();
         System.out.println("Introduzca la descripción del item");
         listItems[id].description = entrada.nextLine();
-        System.out.println("Introduzca el tipo de item: 1- 2- 3-");
+        System.out.println("Introduzca el tipo de item: 1-Vida 2-Fuerza 3-Defensa");
         listItems[id].type = entrada.nextInt();
         System.out.println("Introduzca la experiencia del item");
         listItems[id].experience = entrada.nextInt();
@@ -330,6 +341,7 @@ public class PracGame {
     }
 
     // CASE 3
+    // Lee la clase Potion y la imprime en la pantalla y usa la pocion, es decir eliminamos la pocion utilizada y devolvemos al main los puntos que tenia esa pocion
     static int usarPocion(Potion[] listPotions, int boundPotions) {
         int punto = listPotions[0].points;
         System.out.println("Has usado la pócima: " + listPotions[0].name);
@@ -340,7 +352,8 @@ public class PracGame {
         return punto;
     }
 
-    // CASE 4 -> ARREGLAR LO DE NULL Y 0 AL BORRAR LAS POSICIONES
+    // CASE 4 
+    // Subprograma que elimina la Potion elegida y mueve las pociones a la izquierda para que no haya un hueco entre medias.
 
     static int eliminarPociones(Potion[] listPotions, int boundPotions, int id) {
         for (int i = (id - 1); i <= boundPotions; i++) {
@@ -363,6 +376,7 @@ public class PracGame {
     }
 
     // CASE 5
+    // Imprime por pantalla todas las pociones e items (FOR) ademas de mostrar la pocion/items con mayor y menor puntos/experiencia ademas de el numero de pociones.
     static void mostrarPocimas(Potion[] listPotions, int boundPotions) {
         System.out.println("El número de pocimas son:" + (boundPotions));
         System.out.println("La pócima con mayor número de puntos es: " + maxP(listPotions, boundPotions));
@@ -389,6 +403,8 @@ public class PracGame {
         System.out.println("");
     }
 
+    // Recorre todo el array de de puntos de Potions para saber cual es la maxima puntuacion
+
     static int maxP(Potion[] listPotions, int boundPotions) {
         int max = listPotions[0].points;
         for (int i = 1; i < boundPotions; i++) {
@@ -408,6 +424,8 @@ public class PracGame {
         }
         return max;
     }
+
+    // Recorre todo el array de de puntos de Potions para saber cual es la minima puntuacion
 
     static double minP(Potion[] listPotions, int boundPotions) {
         double peor = listPotions[0].points;
@@ -430,20 +448,21 @@ public class PracGame {
     }
 
     // CASE 6
+    // Hace una salida por pantalla comparando los Strings (no importa las mayusculas) y mostrando primeros aquellos que den 1 sobre su sucesor.
     static void ordenarAlfabaItems(Item[] listItems, int boundItems) {
         String temp;
         for (int i = 0; i < boundItems; i++) {
             for (int j = i + 1; j < boundItems; j++) {
-                // to compare one string with other strings
+                // Compara un String con otro String
                 if (listItems[i].name.compareToIgnoreCase(listItems[j].name) > 0) {
-                    // swapping
+                    // intercambio
                     temp = listItems[i].name;
                     listItems[i].name = listItems[j].name;
                     listItems[j].name = temp;
                 }
             }
         }
-        // print output array
+        // print el array
         System.out.println("Los items alfabeticamente son: ");
         for (int i = 0; i < boundItems; i++) {
             System.out.println(listItems[i].name);
@@ -455,9 +474,9 @@ public class PracGame {
         for (int i = 0; i < boundPotions && flag==true; i++) {
             flag=false;
             for (int j = i + 1; j < boundPotions; j++) {
-                // to compare one string with other strings
+                // Compara un String con otro String
                 if (listPotions[i].name.compareToIgnoreCase(listPotions[j].name) > 0) {
-                    // swapping
+                    // intercambio
                     temp = listPotions[i].name;
                     listPotions[i].name = listPotions[j].name;
                     listPotions[j].name = temp;
@@ -465,7 +484,7 @@ public class PracGame {
                 }
             }            
         }
-        // print output array
+        // print array
         System.out.println("Las pociones alfabeticamente son: ");
         for (int i = 0; i < boundPotions; i++) {
             System.out.println(listPotions[i].name);
@@ -473,6 +492,7 @@ public class PracGame {
     }
 
     // CASE 7
+    // Usuario introduce el id de la pocima/item y sale en pantalla todas las caracteristicas de esta.
     static void buscarPocion(Potion[] listPotions, int boundPotions, Scanner entrada) {
         System.out.println("Introduzca el identificador de la pocion: ");
         int id = entrada.nextInt();
@@ -492,6 +512,7 @@ public class PracGame {
     }
 
     // CASO 8
+    // Estos puntos de experiencia se ven reflejados en un porcentaje de 10. Obteniendo 10 puntos de bonificacion en cada pocima/item.
     public static int subirNivelP(Potion[] listPotions, int boundPotions, int puntos, int EXPERIENCE) {
         int subidaP = 0;
         for (int i = 0; i < boundPotions; i++) {
@@ -513,6 +534,7 @@ public class PracGame {
     } 
 
     // CASO 9
+    // Crea los ficheros de Potion e Items correspondientes y escribe lo que ya se habia introducido en pantalla.
     static void ficheroPotion(Potion[] listPotions, int boundPotions) {
         try {
             ObjectOutputStream out = null;
@@ -540,7 +562,8 @@ public class PracGame {
     }
 
     // CASO 10
-    static void leerFicheroPotions() throws ClassNotFoundException {
+    // Lee los ficheros de Potion e Items correspondientes y los saca por pantalla.
+    static void leerFicheroPotions(Potion[] listPotions, int boundPotions) throws ClassNotFoundException {
         try {
             Potion potion;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("pociones.txt"));
@@ -556,7 +579,7 @@ public class PracGame {
         }
     }
 
-    static void leerFicheroItems() throws ClassNotFoundException {
+    static void leerFicheroItems(Item[] listItems, int boundItems) throws ClassNotFoundException {
         try {
             Item items;
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("items.txt"));
@@ -564,7 +587,7 @@ public class PracGame {
             while (items != null) {
                 System.out.println("Nombre: " + items.name);
                 System.out.println("Descripcion: " + items.description);
-                System.out.println("Puntos: " + items.experience);
+                System.out.println("Experiencia: " + items.experience);
                 items = (Item) in.readObject();
             }
         } catch (IOException e2) {
@@ -573,9 +596,12 @@ public class PracGame {
     }
 
     // CASO 11
-    static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems)
-            throws FileNotFoundException, IOException, ClassNotFoundException {
+    // Crea fichero binario de Potion e Items correspondientes y escribe lo que ya se habia introducido en pantalla.
+
+    static void guardarEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems) throws FileNotFoundException, IOException, ClassNotFoundException {
+        //Potion potion;
         try {
+            //potion = new Potion();
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("pocimas.dat"));
             for (int i = 0; i < boundPotions; i++) {
                 out.writeObject((Potion) listPotions[i]);
@@ -598,7 +624,9 @@ public class PracGame {
     }
 
     // CASO 12
-    static void leerEstado() throws ClassNotFoundException {
+    // Lee fichero binario de Potion e Items correspondientes y lo saca por pantalla.
+
+    static void leerEstado(Potion[] listPotions, int boundPotions, Item[] listItems, int boundItems) throws ClassNotFoundException {
         // Pociones
         try {
             Potion potion;
@@ -629,4 +657,3 @@ public class PracGame {
         }
     }
 }
-
